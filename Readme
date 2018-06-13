@@ -1,0 +1,37 @@
+Generalized two dimensional principal component analysis by Lp-norm for image analysis. 
+Copyright (C) 2018 Jing Wang
+
+For 1D algorithms, the image data should be 2D matrix, nSub*(height*width). 
+For 2D algorithms, the image data should be 3D matrix, height*width*nSub. 
+The images are listed in the subject-by-subject manner. Please refer to the 
+manuscript for more information about the experiments.
+
+Variables:
+FaceDB, Feret or ORL
+x,   image data
+rho, a tuning parameter in RSPCA or 2DPCAL1-S
+s,   a tuning parameter in GPCA or G2DPCA
+p,   a tuning parameter in GPCA or G2DPCA
+nPV, number of projection vectors to be calculated
+W,   projection vectors
+
+Usage:
+Run main.m to play this demo. 
+
+Note:
+In a server with 40 CPUs, G2DPCA_demo_1 takes about 2 days while 
+G2DPCA_demo_2 takes about 1 day. Both of two demos comsume only a little 
+memory. 
+
+Related codes:
+2DPCAL1-S, https://github.com/yuzhounh/2DPCAL1-S
+G2DPCA, https://github.com/yuzhounh/G2DPCA
+G2DPCA_demo_1, https://github.com/yuzhounh/G2DPCA_demo_1
+G2DPCA_demo_2, https://github.com/yuzhounh/G2DPCA_demo_2
+
+Contact information:
+Jing Wang
+wangjing0@seu.edu.cn
+yuzhounh@163.com
+
+2018-6-13 22:58:14
