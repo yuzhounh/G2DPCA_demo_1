@@ -1,7 +1,7 @@
 % plot the reconstruction results
 % 2018-4-23 11:10:30
 
-clear,clc,close all;
+clear,clc;
 
 figure;
 
