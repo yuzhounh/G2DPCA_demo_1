@@ -16,9 +16,8 @@ nPV, number of projection vectors to be calculated
 W,   projection vectors
 
 Usage:
-Run main.m to play this demo. 
+Run main.m to play this demo. It takes about 23 hours on a server with 40 CPUs.
 
-Note:
 On a server with 40 CPUs, G2DPCA_demo_1 takes about 2 days while G2DPCA_demo_2 
 takes about 1 day. Both of the two demos comsume only a little memory. 
 
