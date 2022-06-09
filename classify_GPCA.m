@@ -6,6 +6,9 @@ load sInfo.mat;
 fprintf('classify_GPCA(%s,%d,%d)\n\n',FaceDB,iS,iP);
 load(sprintf('data/%s.mat',FaceDB));
 
+% reshape 2D images to vectors
+x=reshape(x,[height*width,nImg]);
+
 accuracy=zeros(nPV,nRep);
 tic;
 for iRep=1:nRep

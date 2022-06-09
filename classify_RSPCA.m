@@ -6,6 +6,9 @@ load sInfo.mat;
 fprintf('classify_RSPCA(%s,%d)\n\n',FaceDB,iRho);
 load(sprintf('data/%s.mat',FaceDB));
 
+% reshape 2D images to vectors
+x=reshape(x,[height*width,nImg]);
+
 accuracy=zeros(nPV,nRep);
 tic;
 for iRep=1:nRep
