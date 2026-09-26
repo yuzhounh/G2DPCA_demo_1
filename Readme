@@ -1,32 +1,56 @@
-Generalized two dimensional principal component analysis by Lp-norm for image analysis. 
-Copyright (C) 2018 Jing Wang
+# G2DPCA Demo 1
 
-For 1D algorithms, the image data should be 2D matrix, nSub*(height*width). 
-For 2D algorithms, the image data should be 3D matrix, height*width*nSub. 
-The images are listed in the subject-by-subject manner. Please refer to the 
-manuscript for more information about the experiments.
+MATLAB experiments for generalized two-dimensional principal component analysis by Lp-norm, including image reconstruction and classification.
 
-Variables:
-FaceDB, Feret or ORL
-x,   image data
-rho, a tuning parameter in RSPCA or 2DPCAL1-S
-s,   a tuning parameter in GPCA or G2DPCA
-p,   a tuning parameter in GPCA or G2DPCA
-nPV, number of projection vectors to be calculated
-W,   projection vectors
+[GPL-3.0 license](LICENSE) · [Manuscript](manuscript.pdf)
 
-Usage:
-Run main.m to play this demo. It takes about 23 hours on a server with 40 CPUs.
+## Quick Start
 
-Related codes:
-2DPCAL1-S, https://github.com/yuzhounh/2DPCAL1-S
-G2DPCA, https://github.com/yuzhounh/G2DPCA
-G2DPCA_demo_1, https://github.com/yuzhounh/G2DPCA_demo_1
-G2DPCA_demo_2, https://github.com/yuzhounh/G2DPCA_demo_2
+1. Open the repository directory in MATLAB with Parallel Computing Toolbox available.
+2. Review [m1_prepare.m](m1_prepare.m). The default dataset is Feret, supplied as [data/Feret.mat](data/Feret.mat). ORL is an alternative in the configuration, but its data file is not included.
+3. Adjust the parameter sweeps, repetitions, and `nPar` worker count for your machine. The default worker count uses 95% of available processors.
+4. Run:
 
-Contact information:
-Jing Wang
-wangjing0@seu.edu.cn
-yuzhounh@163.com
+```matlab
+main
+```
 
-2018-6-13 22:58:14
+The script prepares data, adds noise, runs reconstruction and classification separately, then plots the results. Generated experiment files are stored in `result/`, with settings in `sInfo.mat`.
+
+The original notes report approximately 23 hours on a server with 40 CPUs. This is a historical measurement, not a current runtime guarantee.
+
+## Data and Parameters
+
+Keep images in subject-by-subject order. Two-dimensional methods use an image array with dimensions `height × width × number_of_images`; one-dimensional methods use one flattened image per row.
+
+- `FaceDB`: dataset selection, Feret or ORL.
+- `x`: image data.
+- `rho`: tuning parameter for RSPCA and 2DPCAL1-S.
+- `s` and `p`: tuning parameters for GPCA and G2DPCA.
+- `nPV`: number of projection vectors; `W`: projection vectors.
+
+See the [manuscript](manuscript.pdf) for the experimental design.
+
+## Repository Structure
+
+- [main.m](main.m): experiment entry point.
+- [m1_prepare.m](m1_prepare.m) and [m1_add_noise.m](m1_add_noise.m): configuration and noisy input preparation.
+- [m2_reco.m](m2_reco.m) and [m2_classify.m](m2_classify.m): experiment stages.
+- [G2DPCA.m](G2DPCA.m), [GPCA.m](GPCA.m), [PCA2DL1S.m](PCA2DL1S.m), and [RSPCA.m](RSPCA.m): algorithms.
+- [m3_reco_plot.m](m3_reco_plot.m) and [m3_classify_plot.m](m3_classify_plot.m): result plots.
+- [data/](data/): bundled Feret input data.
+
+## Related Projects
+
+The original documentation links to [2DPCAL1-S](https://github.com/yuzhounh/2DPCAL1-S), [G2DPCA](https://github.com/yuzhounh/G2DPCA), and [G2DPCA Demo 2](https://github.com/yuzhounh/G2DPCA_demo_2).
+
+## License
+
+See the existing [GNU General Public License, version 3](LICENSE). Retain the notices in the source files and in bundled third-party material.
+
+## Contact
+
+Jing Wang · [wangjing0@seu.edu.cn](mailto:wangjing0@seu.edu.cn) · [yuzhounh@163.com](mailto:yuzhounh@163.com)
+
+Copyright (C) 2018 Jing Wang.
+
